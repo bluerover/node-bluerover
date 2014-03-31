@@ -1,0 +1,17 @@
+{
+    "name": "node-bluerover",
+    "version": "0.1.0",
+    "author": {
+        "name": "Andrew Hassan",
+        "email": "andrewihassan@gmail.com"
+    },
+    "main": "bluerover",
+    "description": "BlueRover API for node.js",
+    "_id": "bluerover@0.1",
+    "dependencies": {
+        "url": "0.7.9",
+        "crypto": "*",
+        "querystring": "*",
+        "url": "*"
+    }
+}
