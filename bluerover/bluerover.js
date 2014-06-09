@@ -136,6 +136,11 @@ BlueRoverApi.stream = function(callback, relativeUrl) {
 
     // Create the request
     var request = http.request(options, function(response) {
+        response.socket.setTimeout(4*60*1000, function() {
+            response.socket.destroy();
+            console.log("Socket connection timed out, resetting stream connection in 8 minutes");
+            BlueRoverApi.restartStream(callback,relativeUrl));
+        });
         // On data, call the callback function
         response.on('data', function(data) {
             callback(data);
@@ -144,6 +149,7 @@ BlueRoverApi.stream = function(callback, relativeUrl) {
 
     request.on('error', function(e) {
         console.log("There was an error connecting to the stream API: " + e.toString());
+        BlueRoverApi.restartStream(callback,relativeUrl));
     });
 
     // Make the request
@@ -205,4 +211,8 @@ BlueRoverApi.call = function (relativeUrl, params, callback, post) {
     else {
         throw new Error("BlueRover API: POST is not supported yet.");
     }
+}
+
+BlueRoverApi.restartStream = function(callback, relativeUrl) {
+    setTimeout(8*60*1000, BlueRoverApi.stream(callback,relativeUrl));
 }
