@@ -1,9 +1,9 @@
 {
-    "name": "node-bluerover",
-    "version": "0.1.1",
+    "name": "node-bluerover-api",
+    "version": "0.1.2",
     "author": {
-        "name": "Andrew Hassan",
-        "email": "andrewihassan@gmail.com"
+        "name": "Jonathan Lam",
+        "email": "jonathan.g.lam@gmail.com"
     },
     "main": "bluerover",
     "description": "BlueRover API for node.js",

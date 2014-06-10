@@ -139,7 +139,7 @@ BlueRoverApi.stream = function(callback, relativeUrl) {
         response.socket.setTimeout(4*60*1000, function() {
             response.socket.destroy();
             console.log("Socket connection timed out, resetting stream connection in 8 minutes");
-            BlueRoverApi.restartStream(callback,relativeUrl));
+            BlueRoverApi.restartStream(callback,relativeUrl);
         });
         // On data, call the callback function
         response.on('data', function(data) {
