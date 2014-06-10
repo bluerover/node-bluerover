@@ -149,7 +149,7 @@ BlueRoverApi.stream = function(callback, relativeUrl) {
 
     request.on('error', function(e) {
         console.log("There was an error connecting to the stream API: " + e.toString());
-        BlueRoverApi.restartStream(callback,relativeUrl));
+        BlueRoverApi.restartStream(callback,relativeUrl);
     });
 
     // Make the request
