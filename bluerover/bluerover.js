@@ -139,11 +139,17 @@ BlueRoverApi.stream = function(callback, relativeUrl) {
         response.socket.setTimeout(4*60*1000, function() {
             response.socket.destroy();
             console.log("Socket connection timed out, resetting stream connection");
-            BlueRoverApi.restartStream(callback,relativeUrl);
+            setTimeout(BlueRoverApi.restartStream(callback,relativeUrl),1000);
         });
         // On data, call the callback function
         response.on('data', function(data) {
             callback(data);
+        });
+
+        response.socket.on("close",function() {
+            response.socket.destroy();
+            console.log("Socket connection closed, resetting stream connection");
+            BlueRoverApi.restartStream(callback,relativeUrl);
         });
     });
 
